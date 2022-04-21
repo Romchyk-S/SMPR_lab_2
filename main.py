@@ -18,14 +18,16 @@ p_1 = sp.symbols("p_1")
 
 p_2 = sp.symbols("p_2")
 
-p_var, eff = gd.get_data_from_file("example.txt")
+# p_var, eff = gd.get_data_from_file("example.txt")
+
+p_var, eff = gd.get_data_from_file("variant.txt")
 
 p_geom = [p_1, p_2, 1-p_1-p_2]
 
 
 Bayes_values_geom = bv.get_bayes_values(p_geom, eff) 
 
-g.geom_method(Bayes_values_geom)
+g.geom_method(Bayes_values_geom, p_1, p_2)
 
 
-Bayes_values_var = bv.get_bayes_values(p_var, eff) 
+Bayes_values_var = bv.get_bayes_values(p_var, eff)
