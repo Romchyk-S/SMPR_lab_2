@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import prettytable as pt
 
 
-def geom_method(Bayes_val, p_1, p_2):
+def geom_method(Bayes_val, p_1, p_2, data_file):
     
     coefficients = get_coefs(Bayes_val, p_1, p_2)
     
@@ -33,16 +33,30 @@ def geom_method(Bayes_val, p_1, p_2):
     Bayes_values_table = pt.PrettyTable()
     
     Bayes_values_table.field_names = ["Координати", "B+(p, φ_1)", "B+(p, φ_2)", "B+(p, φ_3)", "Максимальне значення", "Баєсова множина"]
-    
-    # розбити графік на множини, обрати точки з кожної множини
-    
-    x = 0.4
-    
-    y = 0.4
 
-    row = create_new_row(x, y, Bayes_val, p_1, p_2, points)
     
-    Bayes_values_table.add_row(row)
+    if data_file == "example.txt":
+    
+        x = [0, 0, 0, 0.45, 0.65, 0.9]
+        
+        y = [0, 0.6, 0.9, 0, 0, 0]
+
+    
+    elif data_file == "variant.txt":
+        
+        x = []
+        
+        y = []
+        
+    i = 0
+    
+    while i < len(x):
+        
+        row = create_new_row(x[i], y[i], Bayes_val, p_1, p_2, points)
+        
+        Bayes_values_table.add_row(row)
+        
+        i += 1
     
     print(Bayes_values_table)
     
