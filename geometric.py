@@ -16,6 +16,8 @@ def geom_method(Bayes_val, p_1, p_2, data_file):
     
     coefficients = get_coefs(Bayes_val, p_1, p_2)
     
+    print(coefficients)
+    
     equations = get_equations(coefficients)
     
     print(equations)
