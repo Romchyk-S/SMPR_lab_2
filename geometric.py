@@ -15,21 +15,17 @@ import prettytable as pt
 def geom_method(Bayes_val, p_1, p_2, data_file):
     
     coefficients = get_coefs(Bayes_val, p_1, p_2)
-    
-    print(coefficients)
-    
+
     equations = get_equations(coefficients)
     
-    print(equations)
-    
-    print()
+    for e in equations:
+        
+        print(e)
+        
+        print()
     
     points = get_points(equations)
-    
-    print(points)
-    
-    print()
-    
+
     legend_arr = plotting_lines(points)
     
     Bayes_values_table = pt.PrettyTable()
@@ -96,7 +92,7 @@ def get_coefs(Bayes_val, p_1, p_2):
                 
                 while t < len(temp_string):
                     
-                    if re.search("\D$", temp_string[t]):
+                    if re.search(r"\D$", temp_string[t]):
                         
                         temp_string[t] += temp_string[t+1] 
                         
@@ -104,7 +100,7 @@ def get_coefs(Bayes_val, p_1, p_2):
                         
                     t += 1
                 
-                if re.search("\D?\d", temp_string[0]) and len(temp_string) > 1:
+                if re.search(r"\D?\d", temp_string[0]) and len(temp_string) > 1:
                     
                     split_string[k] = temp_string[0]
                     
@@ -210,7 +206,7 @@ def build_equations(coefs):
         
     elif coefs[2] < 0:
         
-        return f"p_2 = {coefs[0]}*p_1 {coefs[2]}"
+        return f"p_2 = {coefs[0]}*p_1 - {abs(coefs[2])}"
         
     else:
         
@@ -228,7 +224,7 @@ def get_points(equs):
         
         j = 0
         
-        for_point_calc = equs[i].replace("p_2 = ", "").split("*p_1 ")
+        for_point_calc = equs[i].replace(r"p_2 = ", r"").split(r"*p_1 ")
         
         while j < len(for_point_calc):
             

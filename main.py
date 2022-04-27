@@ -15,26 +15,37 @@ import geometric as g
 
 import variational as v
 
-
+print()
 
 
 p_1, p_2 = sp.symbols("p_1, p_2")
 
-p_var, eff = gd.get_data_from_file("example.txt")
+file_name = "example.txt"
 
-# p_var, eff = gd.get_data_from_file("variant.txt")
-# можливо змінити дані
+# file_name = "variant.txt" можливо змінити дані
+
+
+
+p_var, eff = gd.get_data_from_file(file_name)
 
 p_geom = [p_1, p_2, 1-p_1-p_2]
 
 
-# Bayes_values_geom = bv.get_bayes_values(p_geom, eff) 
+print("Геометричний метод: ")
 
-# g.geom_method(Bayes_values_geom, p_1, p_2, "variant.txt")
+print()
 
+Bayes_values_geom = bv.get_bayes_values(p_geom, eff) 
+
+g.geom_method(Bayes_values_geom, p_1, p_2, file_name)
+
+print()
+
+
+print("Метод варіації контрольної точки:")
+
+print()
 
 Bayes_values_var = bv.get_bayes_values(p_var, eff)
-
-# print(Bayes_values_var)
 
 v.variational_method(Bayes_values_var, p_var, eff)
