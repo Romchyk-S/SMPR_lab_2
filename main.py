@@ -20,10 +20,9 @@ print()
 
 p_1, p_2 = sp.symbols("p_1, p_2")
 
-file_name = "example.txt"
+# file_name = "example.txt"
 
-# file_name = "variant.txt" можливо змінити дані
-
+file_name = "variant.txt"
 
 
 p_var, eff = gd.get_data_from_file(file_name)
@@ -35,7 +34,7 @@ print("Геометричний метод: ")
 
 print()
 
-Bayes_values_geom = bv.get_bayes_values(p_geom, eff) 
+Bayes_values_geom = bv.get_bayes_values(p_geom, eff)
 
 g.geom_method(Bayes_values_geom, p_1, p_2, file_name)
 
