@@ -61,7 +61,6 @@ def geom_method(Bayes_val, p_1, p_2, data_file):
         y = [0, 0.6, 0.9, 0, 0, 0.6, 0.4, 0.6, 0.2, 0.1, 0.6, 0.8, 0.2, 0.4]
 
 
-
     scatter_arr = [0, 0, 0]
 
     i = 0
